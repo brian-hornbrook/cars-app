@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div id="content">
+
+{% for car in cars %}
+    <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+        <!-- <div class="card-header">Header</div> -->
+        <div class="card-body">
+            <p class="card-text"><span>Make:&nbsp;&nbsp;</span>{{ car.make }}</p>
+            <p class="card-text"><span>Model:&nbsp;&nbsp;</span>{{ car.model }}</p>
+            <p class="card-text"><span>Year:&nbsp;&nbsp;</span>{{ car.year }}</p>
+            <p class="card-text"><span>Condition:&nbsp;&nbsp;</span>{{ car.condition }}</p>
+            <div id="button-area">
+                <form action="/car/{{ car.id }}" method="GET">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    {% csrf_token %}
+                </form>
+                <form action="/car/{{ car.id }}/delete" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div id="addcar-content">
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <form action="/car/{{ car.id }}" method="POST">
+            <input type="text" name="make" value="{{ car.make }}">
+            <input type="text" name="model" value="{{ car.model }}">
+            <input type="text" name="year" value="{{ car.year }}">
+            <input type="text" name="condition" value="{{ car.condition }}">
+            <br>
+            <button type="submit" class="btn btn-success">Update Car Details</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
